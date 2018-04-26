@@ -1,0 +1,28 @@
+<launch>
+  <param name="njoy" type="int" value="4"/>
+  <node pkg="joy" type="joy_node" name="joy1">
+    <remap from="joy" to="joy/1"/>
+    <param name="dev" type="string" value="/dev/input/js0"/>
+    <param name="deadzone" value="0.0" />
+    <param name="autorepeat_rate" value="100.0" type="double"/>
+  </node>
+  <node pkg="joy" type="joy_node" name="joy2">
+    <remap from="joy" to="joy/2"/>
+    <param name="dev" type="string" value="/dev/input/js1"/>
+    <param name="deadzone" value="0.0" />
+    <param name="autorepeat_rate" value="100.0" type="double"/>
+  </node>
+  <node pkg="joy" type="joy_node" name="joy3">
+    <remap from="joy" to="joy/3"/>
+    <param name="dev" type="string" value="/dev/input/js2"/>
+    <param name="deadzone" value="0.0" />
+    <param name="autorepeat_rate" value="100.0" type="double"/>
+  </node>
+  <node pkg="joy" type="joy_node" name="joy4">
+    <remap from="joy" to="joy/4"/>
+    <param name="dev" type="string" value="/dev/input/js3"/>
+    <param name="deadzone" value="0.0" />
+    <param name="autorepeat_rate" value="100.0" type="double"/>
+  </node>
+  <node pkg="multijoy" name="multijoy_node" type="multijoy_node.py" output="screen"/>
+</launch>
