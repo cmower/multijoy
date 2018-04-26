@@ -1,10 +1,5 @@
 from sys import argv
 
-def printHelp():
-    print "Usage:"
-    print "  $ python genMultiJoyLaunch.py N\n"
-    print "N is the number of joysticks"
-
 def writeJoy(f, n):
     f.write('  <node pkg="joy" type="joy_node" name="joy{}">\n'.format(n))
     f.write('    <remap from="joy" to="joy/{}"/>\n'.format(n))
@@ -26,8 +21,29 @@ def genLaunch(N):
     out.close()
     print "MultiJoy launch created: {}".format(filename)
 
-if __name__=='__main__':
+def genMsg(N):
+    filename='MultiJoy{}.msg'.format(N)
+    out=open(filename, 'w')
+    out.write('Header header\n')
+    for i in xrange(N):
+        txt='sensor_msgs/Joy joy{}\n'.format(i+1)
+        out.write(txt)
+    out.close()
+    print "MultiJoy msg created: {}".format(filename)
 
+def updateCMakeLists(N):
+    f=open('CMakeLists.txt', 'r')
+    fnew=open('CMakeListsUPDATED.txt', 'w')
+    count=0
+    for line in f:
+        fnew.write(line)
+        if 'FILES' in line:
+            fnew.write('  MultiMsg{}.msg\n'.format(N))
+    f.close()
+    fnew.close()
+
+if __name__=='__main__':
+    
     if len(argv)!=2:
         printHelp()
         quit()
@@ -36,7 +52,9 @@ if __name__=='__main__':
         printHelp()
     else:
         N=int(argv[1])
+        if N < 2:
+            print "[ERROR] the idea is to support **multiple** joysticks!"
+            quit()
         genLaunch(N)
-        
-
-    
+        genMsg(N)
+        updateCMakeLists(N)
