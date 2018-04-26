@@ -6,6 +6,7 @@
   <maintainer email="chris.mower@ed.ac.uk">Chris E. Mower</maintainer>
   <author email="chris.mower@ed.ac.uk">Chris E. Mower</author>
   <license>BSD</license>
+  <url type="website">https://github.com/cmower/multijoy</url>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
   <build_depend>sensor_msgs</build_depend>
