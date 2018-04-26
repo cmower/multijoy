@@ -16,3 +16,7 @@ and you're done! This creates the files
 ./launch/joysticks5.launch
 ```
 and also updates the `CMakeLists.txt` for you.
+
+# Device support
+
+`MultiJoy` supports what ever `Joy` supports. See `joy`  package summary [here](http://wiki.ros.org/joy).
