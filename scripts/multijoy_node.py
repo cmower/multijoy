@@ -15,7 +15,6 @@ class MultiJoy(object):
         self.njoy=rospy.get_param('njoy')
 
         Msg='mj.MultiJoy{}'.format(self.njoy)
-        self.msgtype=eval(Msg)
         self.msg=eval('{}()'.format(Msg))
 
         self.pub=rospy.Publisher('multijoy', eval(Msg), queue_size=10)
