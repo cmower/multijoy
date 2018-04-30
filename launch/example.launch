@@ -14,9 +14,9 @@
     <param name="autorepeat_rate" value="100.0" type="double"/>
   </node>
 
-  <!-- Start multijoy_node.py -->
+  <!-- Start multijoy_node.py -->    
   <node pkg="multijoy" name="multijoy_node" type="multijoy_node.py" output="screen">
-    <param name="debug" type="bool" value="true"/>
+    <!-- <param name="debug" type="bool" value="true"/> -->
     <param name="njoys" type="int" value="2"/>
   </node>
   
