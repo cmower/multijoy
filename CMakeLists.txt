@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
   FILES
+  MultiJoy.msg
   MultiJoy2.msg
   MultiJoy3.msg
   MultiJoy4.msg
